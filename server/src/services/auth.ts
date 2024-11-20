@@ -37,6 +37,11 @@ export const getUser = (token: string): JwtPayload | null=> {
   return user;
 };
 
+export const signToken = (username: string, email:string, _id: unknown) => {
+  const payload = { username, email, _id };
+  const secretKey = process.env.JWT_SECRET_KEY || '';
+}
+
   /*if (authHeader) {
     const token = authHeader.split(' ')[1];
 
