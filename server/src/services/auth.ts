@@ -19,7 +19,10 @@ export const getUser = (token: string): JwtPayload | null=> {
     return null;
   }
   };
-  const authHeader = req.headers.authorization;
+  
+  export const authenticateGraphQLRequest = (context: any) => {
+    
+  }
 
   if (authHeader) {
     const token = authHeader.split(' ')[1];
