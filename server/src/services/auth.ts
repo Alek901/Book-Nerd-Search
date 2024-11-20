@@ -23,7 +23,11 @@ export const getUser = (token: string): JwtPayload | null=> {
   export const authenticateGraphQLRequest = (context: any) => {
     const authHeader = context.req.headers.authorizaton;
 
-    
+    if (!authHeader) {
+      throw new Error('Authentication required');
+    }
+
+    const token = authHeader.split('')[1];
   }
 
   if (authHeader) {
