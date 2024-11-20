@@ -21,6 +21,8 @@ export const getUser = (token: string): JwtPayload | null=> {
   };
   
   export const authenticateGraphQLRequest = (context: any) => {
+    const authHeader = context.req.headers.authorizaton;
+
     
   }
 
