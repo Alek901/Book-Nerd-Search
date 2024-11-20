@@ -27,10 +27,17 @@ export const getUser = (token: string): JwtPayload | null=> {
       throw new Error('Authentication required');
     }
 
-    const token = authHeader.split('')[1];
+  const token = authHeader.split('')[1];
+  const user = getUser(token);
+
+  if (!user) {
+    throw new Error('invalid or expired token');
   }
 
-  if (authHeader) {
+  return user;
+};
+
+  /*if (authHeader) {
     const token = authHeader.split(' ')[1];
 
     const secretKey = process.env.JWT_SECRET_KEY || '';
