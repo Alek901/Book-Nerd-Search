@@ -10,7 +10,15 @@ interface JwtPayload {
   email: string,
 }
 
-export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
+export const getUser = (token: string): JwtPayload | null=> {
+  try {
+    const secretKey = process.env.JWT_SECRET_KEY || '';
+    const user = jwt.verify(token, secretKey) as JwtPayload;
+    return user;
+  } catch (error) {
+    return null;
+  }
+  };
   const authHeader = req.headers.authorization;
 
   if (authHeader) {
